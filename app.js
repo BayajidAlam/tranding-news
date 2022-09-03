@@ -14,10 +14,9 @@ div.innerHTML = '';
 
 
 
-
 // get the array of catagory
+
 const DisplayCategory = data =>{
- 
   const categoryConatiner = document.getElementById('category-container');
   for(category of data){
     const categoryItem = document.createElement('div');
@@ -42,6 +41,7 @@ const loadAllInACategory = (categoryID) =>{
  
 }
 
+
 // loop array to get single news  in a caragory and print number of news in a category
 const loadAllNewsInACategory = (ids) =>{
   // print Number of founded etem on loop
@@ -58,16 +58,18 @@ const loadAllNewsInACategory = (ids) =>{
     .then(data =>loadNews(data.data[0]))
       
   }
-    
+ 
   // display card using data of news object
  const loadNews = newsData =>{
   console.log(newsData)
+
   const cardContainer = document.getElementById('card-container')
+ 
   const div = document.createElement('div')
    
   // distucture the data from object
-  const{thumbnail_url,title,details,img} = newsData
-
+  const{thumbnail_url,title,details} = newsData
+  
  div.innerHTML = `
   <div class="card card-side bg-base-100 my-2 shadow-xl">
   <figure><img class="h-full w-auto" src="${thumbnail_url
@@ -75,34 +77,12 @@ const loadAllNewsInACategory = (ids) =>{
   <div class="card-body">
     <h2 class="card-title">${title}</h2>
     <p>${details.length > 600?details.slice(0,600
-      ) +"...":details}</p>
-
-    <div class="text-center">
-        
-          <label for="my-modal-3" class="btn modal-button">See More</label>
-
-         
-          <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-          <div class="modal">
-          <div class="modal-box relative">
-          <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          
-        <div>
-          <div class="card w-full bg-base-100 shadow-xl">
-          <figure><img src="${thumbnail_url}" alt="Shoes" /></figure>
-          <div class="card-body">
-            <h2 class="card-title">${title}</h2>
-            <p>${details}</p>
-            <div class="card-actions justify-end">
-              
-            </div>
-          </div>
-        </div>
-          </div>
-
-   </div>
-</div>
-        </div>
+      ) +"...":details}</p> 
+      
+      <div class="text-center">
+      
+      </div>
+    
      <div class="flex justify-around">
       <div class="flex justify-around">
           <div>
@@ -113,16 +93,28 @@ const loadAllNewsInACategory = (ids) =>{
              <div>${newsData.author.published_date.length >10?newsData.author.published_date.slice(0,10):newsData.author.published_date}</div>
          </div>
      </div>
-         <div><i class="fa-thin fa-eye"></i>${newsData.total_view
+     <div class="flex mx-1 items-center">
+         <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+       </svg>
+       </div>
+       <div>
+       ${newsData.total_view !== 0?newsData.total_view:'Not Found'
          }</div>
-    </div>
+      </div>
+      </div>
 
   </div>
-</div>
+ </div>
   `
-  cardContainer.appendChild(div);
- }
+  cardContainer.appendChild(div)
+ 
+
+
 //  spinning will stop after the function is exicuter by next line
  spinner.classList.add('hidden')
+
+}
 
 }
