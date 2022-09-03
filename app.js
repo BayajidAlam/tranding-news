@@ -49,6 +49,7 @@ const loadAllInACategory = (categoryID) =>{
 
 // loop array to get single news  in a caragory and print number of news in a category
 const loadAllNewsInACategory = (ids) =>{
+  
   // print Number of founded etem on loop
   div.classList.add('found-item')
   div.innerHTML = `<p>${ids.length !== 0?ids.length +' News found':'No news found'}</p> `
@@ -68,6 +69,7 @@ const loadAllNewsInACategory = (ids) =>{
  const loadNews = newsData =>{
   console.log(newsData)
 
+
   const cardContainer = document.getElementById('card-container')
  
   const div = document.createElement('div')
@@ -86,20 +88,21 @@ const loadAllNewsInACategory = (ids) =>{
       
       <div class="text-center">
          <!-- The button to open modal -->
-<label for="my-modal-6" class="btn modal-button">Read more</label>
-
-<!-- Put this part before </body> tag -->
+          
+         <label for="my-modal-6" class="btn modal-button">Read more</label>
+          
+         
 <input type="checkbox" id="my-modal-6" class="modal-toggle" />
 <div class="modal modal-bottom sm:modal-middle">
-  <div class="modal-box">
+  <div id="modal-body" class="modal-box">
     <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-    <div class="modal-action">
+    <p class="py-4">You've been selected for a chance to get one year          of subscription to use Wikipedia for free!</p>
+     <div class="modal-action">
       <label for="my-modal-6" class="btn">Close</label>
-    </div>
-  </div>
-</div>
-      </div>
+   </div>
+         </div>
+         </div>
+             </div>
     
      <div class="flex justify-around">
       <div class="flex justify-around">
@@ -136,3 +139,4 @@ const loadAllNewsInACategory = (ids) =>{
 }
 
 }
+
