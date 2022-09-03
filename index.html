@@ -23,11 +23,11 @@
     <h1 class="text-blue-600 font-bold text-3xl p-4">Tranding News BD</h1>
   </div>
   <div class="flex text-blue-600 font-bold text-2xl p-4">
-    <div class="mx-5">
-      <h3>News</h3>
+    <div class="mx-5 cursor-pointer">
+      <h3><a href="file:///E:/Projects/Assignment/Tranding%20News/index.html">News</a></h3>
     </div>
-    <div>
-      <h3>Blog</h3>
+    <di>
+      <h3><a href="file:///E:/Projects/Assignment/Tranding%20News/blog.html" class="cursor-pointer">Blog</a></h3>
     </div>
   </div>
 </div>
@@ -62,9 +62,24 @@
 
  <!-- sorting section start here -->
  <section id="section-sort">
-  
+    <div class="sort-container">
+      <div class="option-container">
+        <select name="" id="sort-list">
+          <option value="">Default</option>
+          <option value="">By Name</option>
+          <option value="">By Date</option>
+          <option value="">By Rating</option>
+        </select>
+      </div>
+      <div class="sort-right">
+        <div class="todays-pick">Today’s Pick</div>
+        <div class="tranding">Trending</div>
+      </div>
+    </div>
  </section>
  <!-- sorting section start here -->
+
+
 
 <!-- all card container  start here -->
  <section id="card-container" class="container m-auto">
@@ -72,7 +87,7 @@
 
 
  </section>
- <!-- all card container  end here -->
+
 
  <footer class="footer justify-center items-center p-8">
  <p>Copyright 2021 Trandign News</p>
