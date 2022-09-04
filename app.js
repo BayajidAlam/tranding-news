@@ -40,9 +40,14 @@ const loadAllInACategory = (categoryID) =>{
   // spinning will start here
   spinner.classList.remove("hidden");
 
- fetch(` https://openapi.programming-hero.com/api/news/category/0${categoryID}`)
+ try{
+  fetch(` https://openapi.programming-hero.com/api/news/category/0${categoryID}`)
  .then(res => res.json())
  .then(data=>loadAllNewsInACategory(data.data))
+ }
+ catch(error){
+  console.log(error)
+ }
  
 }
 
@@ -59,17 +64,18 @@ const loadAllNewsInACategory = (ids) =>{
 
   // loop the array here
   for(const id of ids){
-    fetch(` https://openapi.programming-hero.com/api/news/${id._id}`)
+    console.log(id)
+    try{    fetch(` https://openapi.programming-hero.com/api/news/${id._id}`)
     .then(res => res.json())
-    .then(data =>loadNews(data.data[0]))
+    .then(data =>loadNews(data.data[0]))}
+    catch(error){
+      console.log(error)
+    }
       
   }
  
   // display card using data of news object
  const loadNews = newsData =>{
-  console.log(newsData)
-
-
   const cardContainer = document.getElementById('card-container')
  
   const div = document.createElement('div')
@@ -111,7 +117,7 @@ const loadAllNewsInACategory = (ids) =>{
           </div>
           <div>
              <div>${newsData.author.name}</div>
-             <div>${newsData.author.published_date.length >10 ?newsData.author.published_date.slice(0,10):newsData.author.published_date}</div>
+             <div>${newsData.author.published_date.length <10 || newsData.author.published_date.length === 0 ?"not found":newsData.author.published_date.slice(0,10) }</div>
          </div>
      </div>
      <div class="flex mx-1 items-center">
