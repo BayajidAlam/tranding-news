@@ -6,7 +6,7 @@ const loadCaregory = () =>{
   .then(data =>DisplayCategory(data.data.news_category));
   }
   catch(error){
-    console.log(error)
+    console.log('somthing wrong')
   }
 }
 
@@ -46,7 +46,7 @@ const loadAllInACategory = (categoryID) =>{
  .then(data=>loadAllNewsInACategory(data.data))
  }
  catch(error){
-  console.log(error)
+  console.log('somthing wrong')
  }
  
 }
@@ -69,7 +69,7 @@ const loadAllNewsInACategory = (ids) =>{
     .then(res => res.json())
     .then(data =>loadNews(data.data[0]))}
     catch(error){
-      console.log(error)
+      console.log('somthing wrong')
     }
       
   }
@@ -117,7 +117,7 @@ const loadAllNewsInACategory = (ids) =>{
           </div>
           <div>
              <div>${newsData.author.name}</div>
-             <div>${newsData.author.published_date.length <10 || newsData.author.published_date.length === 0 ?"not found":newsData.author.published_date.slice(0,10) }</div>
+             <div>${newsData.author.published_date.length<10 || newsData.author.published_date.length === '0' ?"not found":newsData.author.published_date.slice(0,10) }</div>
          </div>
      </div>
      <div class="flex mx-1 items-center">
@@ -142,6 +142,7 @@ const loadAllNewsInACategory = (ids) =>{
 //  spinning will stop after the function is exicuter by next line
  spinner.classList.add('hidden')
 
+ 
 }
 
 }
